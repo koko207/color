@@ -1,57 +1,83 @@
+
 <html>
 <head>
-    <title>Color App by Kamal Sir</title>
-
+    <title>Even Odd Finder App by Kamal Sir</title>
     <style>
-        *{
-            font-size:40px;
-            text-align:center;
-            margin:auto;
+        * {
+            font-size: 40px;
+            text-align: center;
+            margin: auto;
         }
-
-        .btn{
-            width:20%;
-            margin:2%;
-            border-radius:30px;
-            background-color:blue;
-            color:white;
+        body {
+            background-color: azure;
         }
-
-        .btn:hover{
-            color:white;
+        .btn {
+            width: 20%;
+            margin: 2%;
+            border-radius: 30px;
+        }
+        .btn:hover {
+            color: white;
+            background-color: blue;
         }
     </style>
 </head>
 
 <body>
+    <br/>
+    <h1>Even Odd Finder App</h1>
+    <br/>
 
-    <br>
-    <h1>Color App</h1>
-    <br>
-
-    <form onsubmit="colorme()">
-        <input type="submit" value="Red" class="btn" />
-        <input type="submit" value="Green" class="btn" />
-        <input type="submit" value="Blue" class="btn" />
+    <form onsubmit="check()">
+        <input type="number" id="num" placeholder="Enter Integer" />
+        <br/><br/>
+        <input type="submit" value="M1" class="btn"/>
+        <input type="submit" value="M2" class="btn"/>
+        <input type="submit" value="M3" class="btn"/>
     </form>
 
+    <h2 id="msg"></h2>
+
     <script>
-        function colorme(){
+        function check() {
             event.preventDefault();
 
+            let num = document.getElementById("num");
+            let msg = document.getElementById("msg");
             let action = document.activeElement.value;
 
-            if(action === "Red"){
-                document.body.style.backgroundColor = "red";
+            if (num.value === "") {
+                alert("Please Enter Integer");
+                msg.innerHTML = "";
+                num.focus();
+                return;
             }
-            else if(action === "Green"){
-                document.body.style.backgroundColor = "green";
+
+            let n = parseInt(num.value);
+
+            if (action === "M1") {
+                if (n % 2 === 0)
+                    msg.innerHTML = "M1 --> even";
+                else
+                    msg.innerHTML = "M1 --> odd";
             }
-            else if(action === "Blue"){
-                document.body.style.backgroundColor = "blue";
+
+            else if (action === "M2") {
+                switch (n % 2) {
+                    case 0:
+                        msg.innerHTML = "M2 --> even";
+                        break;
+                    case 1:
+                        msg.innerHTML = "M2 --> odd";
+                        break;
+                }
+            }
+
+            else if (action === "M3") {
+                
+                msg.innerHTML = "M3 --> your own logic here";
             }
         }
     </script>
-
 </body>
 </html>
